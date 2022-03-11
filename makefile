@@ -4,7 +4,7 @@ OBJS := main.o
 CXX := g++
 CXXFLAGS := -std=c++17
 
-TMP := .$(OUT)
+TMP := ._$(OUT)
 
 $(OUT): $(OBJS)
 	touch $(TMP).cc
@@ -13,6 +13,13 @@ $(OUT): $(OBJS)
 	rm -f $(TMP)*
 
 $(TMP): $(TMP).cc $(OBJS)
+
+main.o: matrix.hh
+
+%.cc: %.hh
+	touch $@
+%.hh: %.tt
+	touch $@
 
 .PHONY: clean
 clean:

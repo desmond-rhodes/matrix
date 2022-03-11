@@ -1,0 +1,16 @@
+template <typename T>
+template <typename ...U>
+matrix<T>::matrix(size_t r, size_t c, U... l)
+	: matrix(r, c, {l...}) {}
+
+template <typename T>
+matrix<T>::matrix(size_t r, size_t c, std::initializer_list<T> l)
+	: data(r*c), row {r}, col {c}
+{
+	auto it {l.begin()};
+	for (auto& i : data)
+		if (it == l.end())
+			break;
+		else
+			i = *it++;
+}
