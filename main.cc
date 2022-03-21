@@ -24,6 +24,16 @@ int main(int argc, char* argv[]) {
 	std::cout << "2M\n" << 2.0 * m << '\n';
 	std::cout << "M\n-\n2\n" << m / 2.0 << '\n';
 
+	matrix<unsigned int> const f0 {2, 2, 1u, 1u, 1u, 0u};
+	size_t const n {10};
+
+	matrix<unsigned int> fn {2, 2, 1u, 0u, 0u, 1u};
+	std::cout << "Fibonacci matrix\n";
+	for (size_t i {0}; i < n; ++i) {
+		fn *= f0;
+		std::cout << "F" << i << '\n' << fn << '\n';
+	}
+
 	std::cout << "Hello, world!\n";
 	return 0;
 }

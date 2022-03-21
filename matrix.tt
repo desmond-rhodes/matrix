@@ -141,3 +141,22 @@ matrix<T> operator/(matrix<T>&& m, T const& s) {
 	m /= s;
 	return std::move(m);
 }
+
+template <typename T>
+matrix<T> operator*(matrix<T> const& m, matrix<T> const& n) {
+	matrix<T> r {m.row(), n.col()};
+	for (size_t i {0}; i < r.row(); ++i)
+		for (size_t j {0}; j < r.col(); ++j) {
+			if (m.col())
+				r(i, j) = m(i, 0) * n(0, j);
+			for (size_t k {1}; k < m.col(); ++k)
+				r(i, j) += m(i, k) * n(k, j);
+		}
+	return r;
+}
+
+template <typename T>
+matrix<T>& operator*=(matrix<T>& m, matrix<T> const& n) {
+	m = m * n;
+	return m;
+}

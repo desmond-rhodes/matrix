@@ -44,6 +44,9 @@ template <typename T> matrix<T> operator*(matrix<T>&&, T const&);
 template <typename T> matrix<T> operator/(matrix<T> const&, T const&);
 template <typename T> matrix<T> operator/(matrix<T>&&, T const&);
 
+template <typename T> matrix<T> operator*(matrix<T> const&, matrix<T> const&);
+template <typename T> matrix<T>& operator*=(matrix<T>&, matrix<T> const&);
+
 #include "matrix.tt"
 
 #endif
