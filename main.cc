@@ -22,6 +22,7 @@ int main(int argc, char* argv[]) {
 	std::cout << "M + M^T\n" << m + m.transpose() << '\n';
 	std::cout << "M - M^T\n" << m - m.transpose() << '\n';
 	std::cout << "2M\n" << 2.0 * m << '\n';
+	std::cout << "M\n-\n2\n" << m / 2.0 << '\n';
 
 	std::cout << "Hello, world!\n";
 	return 0;
