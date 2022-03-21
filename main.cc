@@ -34,6 +34,14 @@ int main(int argc, char* argv[]) {
 		std::cout << "F" << i << '\n' << fn << '\n';
 	}
 
+	matrix<double> i3 {3, 3, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
+
+	std::cout << "I == I   " << (i3 == i3) << '\n';
+	std::cout << "I == I^T " << (i3 == i3.transpose()) << '\n';
+	std::cout << "I == I+I " << (i3 == i3 + i3) << '\n';
+	std::cout << "M == I   " << (m == i3) << '\n';
+	std::cout << "M != 2M  " << (m != 2.0 * m) << '\n';
+
 	std::cout << "Hello, world!\n";
 	return 0;
 }

@@ -2,6 +2,7 @@
 #define MATRIX_HH
 
 #include <vector>
+#include <tuple>
 
 template <typename T>
 class matrix {
@@ -10,6 +11,8 @@ class matrix {
 
 		size_t row() const;
 		size_t col() const;
+
+		std::pair<size_t, size_t> dimension() const;
 
 		T& operator()(size_t, size_t);
 		T const& operator()(size_t, size_t) const;
@@ -28,6 +31,9 @@ class matrix {
 		size_t _col;
 		std::vector<T> _data;
 };
+
+template <typename T> bool operator==(matrix<T> const&, matrix<T> const&);
+template <typename T> bool operator!=(matrix<T> const&, matrix<T> const&);
 
 template <typename T> matrix<T> operator+(matrix<T> const&, matrix<T> const&);
 template <typename T> matrix<T> operator+(matrix<T>&&, matrix<T> const&);
