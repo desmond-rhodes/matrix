@@ -15,6 +15,7 @@ class matrix {
 		T const& operator()(size_t, size_t) const;
 
 		matrix<T>& operator+=(matrix<T> const&);
+		matrix<T>& operator-=(matrix<T> const&);
 
 		matrix<T> transpose() const;
 
@@ -29,6 +30,9 @@ class matrix {
 template <typename T> matrix<T> operator+(matrix<T> const&, matrix<T> const&);
 template <typename T> matrix<T> operator+(matrix<T>&&, matrix<T> const&);
 template <typename T> matrix<T> operator+(matrix<T> const&, matrix<T>&&);
+
+template <typename T> matrix<T> operator-(matrix<T> const&, matrix<T> const&);
+template <typename T> matrix<T> operator-(matrix<T>&&, matrix<T> const&);
 
 #include "matrix.tt"
 

@@ -20,6 +20,7 @@ int main(int argc, char* argv[]) {
 	std::cout << "M\n" << m << '\n';
 	std::cout << "M^T\n" << m.transpose() << '\n';
 	std::cout << "M + M^T\n" << m + m.transpose() << '\n';
+	std::cout << "M - M^T\n" << m - m.transpose() << '\n';
 
 	std::cout << "Hello, world!\n";
 	return 0;
