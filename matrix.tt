@@ -23,6 +23,14 @@ matrix<T> matrix<T>::transpose() const {
 	return n;
 }
 
+template <typename T>
+matrix<T>& matrix<T>::operator+=(matrix<T> const& m) {
+	for (size_t i {0}; i < row(); ++i)
+		for (size_t j {0}; j < col(); ++j)
+			(*this)(i, j) += m(i, j);
+	return *this;
+}
+
 /* PRIVATE */
 
 template <typename T>
@@ -38,3 +46,22 @@ matrix<T>::matrix(size_t r, size_t c, std::initializer_list<T> l)
 }
 
 /* FREE */
+
+template <typename T>
+matrix<T> operator+(matrix<T> const& m, matrix<T> const& n) {
+	matrix<T> r {m};
+	r += n;
+	return r;
+}
+
+template <typename T>
+matrix<T> operator+(matrix<T>&& m, matrix<T> const& n) {
+	m += n;
+	return std::move(m);
+}
+
+template <typename T>
+matrix<T> operator+(matrix<T> const& m, matrix<T>&& n) {
+	n += m;
+	return std::move(n);
+}
