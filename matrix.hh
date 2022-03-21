@@ -24,6 +24,10 @@ class matrix {
 
 		matrix<T> transpose() const;
 
+		matrix<T>& row_swap(size_t, size_t);
+		matrix<T>& row_times(T const&, size_t);
+		matrix<T>& row_add(T const&, size_t, size_t);
+
 	private:
 		matrix(size_t, size_t, std::initializer_list<T>);
 

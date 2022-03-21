@@ -42,6 +42,26 @@ int main(int argc, char* argv[]) {
 	std::cout << "M == I   " << (m == i3) << '\n';
 	std::cout << "M != 2M  " << (m != 2.0 * m) << '\n';
 
+	matrix<double> a {3, 3, 2.0, 3.0, 5.0, 7.0, 11.0, 13.0, 17.0, 19.0, 23.0};
+
+	std::cout << '\n';
+	std::cout << "A\n" << a << '\n';
+
+	a.row_swap(0, 2);
+	std::cout << "bi <-> bj\n";
+	std::cout << "~~~~~~~~~\n";
+	std::cout << "A\n" << a << '\n';
+
+	a.row_times(1.0 / a(1, 1), 1);
+	std::cout << "k bi\n";
+	std::cout << "~~~~\n";
+	std::cout << "A\n" << a << '\n';
+
+	a.row_add(a(2, 2) / a(0, 2) * -1.0, 0, 2);
+	std::cout << "k bi + bj\n";
+	std::cout << "~~~~~~~~~\n";
+	std::cout << "A\n" << a << '\n';
+
 	std::cout << "Hello, world!\n";
 	return 0;
 }
