@@ -39,6 +39,14 @@ matrix<T>& matrix<T>::operator-=(matrix<T> const& m) {
 	return *this;
 }
 
+template <typename T>
+matrix<T>& matrix<T>::operator*=(T const& s) {
+	for (size_t i {0}; i < row(); ++i)
+		for (size_t j {0}; j < col(); ++j)
+			(*this)(i, j) *= s;
+	return *this;
+}
+
 /* PRIVATE */
 
 template <typename T>
@@ -84,5 +92,31 @@ matrix<T> operator-(matrix<T> const& m, matrix<T> const& n) {
 template <typename T>
 matrix<T> operator-(matrix<T>&& m, matrix<T> const& n) {
 	m -= n;
+	return std::move(m);
+}
+
+template <typename T>
+matrix<T> operator*(T const& s, matrix<T> const& m) {
+	matrix<T> r {m};
+	r *= s;
+	return r;
+}
+
+template <typename T>
+matrix<T> operator*(T const& s, matrix<T>&& m) {
+	m *= s;
+	return std::move(m);
+}
+
+template <typename T>
+matrix<T> operator*(matrix<T> const& m, T const& s) {
+	matrix<T> r {m};
+	r *= s;
+	return r;
+}
+
+template <typename T>
+matrix<T> operator*(matrix<T>&& m, T const& s) {
+	m *= s;
 	return std::move(m);
 }
