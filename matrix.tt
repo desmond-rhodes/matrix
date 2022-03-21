@@ -1,0 +1,40 @@
+/* PUBLIC */
+
+template <typename T>
+template <typename... U>
+matrix<T>::matrix(size_t r, size_t c, U... l)
+	: matrix(r, c, {l...}) {}
+
+template <typename T> size_t matrix<T>::row() const { return _row; }
+template <typename T> size_t matrix<T>::col() const { return _col; }
+
+template <typename T>
+T& matrix<T>::operator()(size_t r, size_t c) { return _data[r*_col+c]; }
+
+template <typename T>
+T const& matrix<T>::operator()(size_t r, size_t c) const { return _data[r*_col+c]; }
+
+template <typename T>
+matrix<T> matrix<T>::transpose() const {
+	matrix<T> n {col(), row()};
+	for (size_t i {0}; i < row(); ++i)
+		for (size_t j {0}; j < col(); ++j)
+			n(j, i) = (*this)(i, j);
+	return n;
+}
+
+/* PRIVATE */
+
+template <typename T>
+matrix<T>::matrix(size_t r, size_t c, std::initializer_list<T> l)
+	: _row {r}, _col {c}, _data(r*c)
+{
+	auto it {l.begin()};
+	for (auto& i : _data)
+		if (it == l.end())
+			break;
+		else
+			i = *it++;
+}
+
+/* FREE */
