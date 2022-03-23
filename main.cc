@@ -17,10 +17,13 @@ int main(int argc, char* argv[]) {
 
 	matrix<double> m {4, 4, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0};
 
+	auto mt {m};
+	mt.transpose();
+
 	std::cout << "M\n" << m << '\n';
-	std::cout << "M^T\n" << m.transpose() << '\n';
-	std::cout << "M + M^T\n" << m + m.transpose() << '\n';
-	std::cout << "M - M^T\n" << m - m.transpose() << '\n';
+	std::cout << "M^T\n" << mt << '\n';
+	std::cout << "M + M^T\n" << m + mt << '\n';
+	std::cout << "M - M^T\n" << m - mt << '\n';
 	std::cout << "2M\n" << 2.0 * m << '\n';
 	std::cout << "M\n-\n2\n" << m / 2.0 << '\n';
 
@@ -36,8 +39,11 @@ int main(int argc, char* argv[]) {
 
 	matrix<double> i3 {3, 3, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
 
+	auto i3t {i3};
+	i3t.transpose();
+
 	std::cout << "I == I   " << (i3 == i3) << '\n';
-	std::cout << "I == I^T " << (i3 == i3.transpose()) << '\n';
+	std::cout << "I == I^T " << (i3 == i3t) << '\n';
 	std::cout << "I == I+I " << (i3 == i3 + i3) << '\n';
 	std::cout << "M == I   " << (m == i3) << '\n';
 	std::cout << "M != 2M  " << (m != 2.0 * m) << '\n';

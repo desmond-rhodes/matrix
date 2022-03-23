@@ -22,7 +22,7 @@ class matrix {
 		matrix<T>& operator*=(T const&);
 		matrix<T>& operator/=(T const&);
 
-		matrix<T> transpose() const;
+		matrix<T>& transpose();
 
 		matrix<T>& row_swap(size_t, size_t);
 		matrix<T>& row_times(T const&, size_t);
